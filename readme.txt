@@ -3,7 +3,7 @@ Contributors: automattic, andy, orensol, markjaquith, vnsavage, batmoo, yoavf
 Tags: cache, memcache, memcached, redis, object-cache, speed, performance, load, server
 Requires at least: 3.2
 Tested up to: 5.3.2
-Stable tag: 1.5
+Stable tag: 1.6
 
 Batcache uses the WordPress object cache API to store and serve rendered pages (Redis, Memcached, or any compatible backend).
 
@@ -77,6 +77,14 @@ Install dev dependencies with Composer:
 Configuration: `.phpcs.xml.dist`, `phpstan.neon`, `phpstan-baseline.neon`, `.editorconfig`.
 
 == Changelog ==
+
+= 1.6 =
+
+* Document compatibility with any WordPress object cache API backend (Redis, Memcached, etc.), not only Memcached
+* Update code comments and docs to use "object cache" instead of "memcached" where generic
+* Readme: add Object cache backend section; cite Memcached as reference setup and original dependency
+* Add PHP quality tooling: Composer dev dependencies (WPCS, PHPCompatibility-WP, PHPStan with WordPress stubs), `.phpcs.xml.dist`, `phpstan.neon`, `.editorconfig`; `composer lint`, `composer format`, `composer analyze`
+* Code changes for PHPCS compliance: WordPress Coding Standards (WordPress-Extra, WordPress-Docs), formatting, PHPDoc, and targeted rule exclusions for drop-in layout
 
 = 1.5 =
 
