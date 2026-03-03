@@ -2,21 +2,51 @@
 <ruleset name="Batcache">
 	<description>Custom ruleset for Batcache (WordPress Coding Standards).</description>
 
-	<!-- Check PHP files only. -->
-	<arg name="extensions" value="php"/>
+    <!-- Scan only PHP files -->
+    <arg name="extensions" value="php"/>
+
+    <!-- Show sniff name in report. -->
+    <arg value="sp"/>
+
+    <!-- Show progress. -->
+    <arg value="p"/>
+
+    <!-- Use colors. -->
+    <arg name="colors"/>
+
+    <!-- Set ini. -->
+    <ini name="memory_limit" value="512M"/>
+    <ini name="max_execution_time" value="-1"/>
+
 	<file>.</file>
 
 	<!-- Exclude vendor and other non-project paths. -->
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
 
 	<!-- Use WordPress-Extra (core + extra rules) and PHPCompatibility for WordPress. -->
 	<rule ref="WordPress-Extra">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 	</rule>
+	<!-- advanced-cache.php: drop-in with top-level functions + class by design. -->
+	<rule ref="Generic.Files.OneObjectStructurePerFile">
+		<exclude-pattern>advanced-cache\.php</exclude-pattern>
+	</rule>
+	<rule ref="Universal.Files.SeparateFunctionsFromOO">
+		<exclude-pattern>advanced-cache\.php</exclude-pattern>
+	</rule>
+	<!-- advanced-cache.php: $function parameter is part of the variant API. -->
+	<rule ref="Universal.NamingConventions.NoReservedKeywordParameterNames">
+		<exclude-pattern>advanced-cache\.php</exclude-pattern>
+	</rule>
+
 	<rule ref="WordPress-Docs"/>
 	<rule ref="PHPCompatibilityWP"/>
 
 	<!-- Set minimum supported PHP version (align with WordPress). -->
-	<config name="testVersion" value="7.4-"/>
+	<config name="testVersion" value="7.2-"/>
+
+	<!-- Set the minimum supported WP version. This is used by several sniffs.
+		 The minimum version set here should be in line with the minimum WP version
+		 as set in the "Requires at least" tag in the readme.txt file. -->
+	<config name="minimum_supported_wp_version" value="4.4"/>
 </ruleset>
