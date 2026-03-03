@@ -80,6 +80,11 @@ Configuration: `.phpcs.xml.dist`, `phpstan.neon`, `phpstan-baseline.neon`, `.edi
 
 = 1.6 =
 
+* Development: add DDEV for local WordPress environment; add `.ddev/config.yaml`, `.ddev/docker-compose.plugin.yaml` (plugin mount at `wp/wp-content/plugins/batcache`)
+* Docs: add TESTING.md with DDEV one-time setup, manual testing steps, Redis/Memcached section; document Redis Object Cache installation via WP-CLI and wp-config (`WP_REDIS_HOST`, `WP_CACHE`)
+* Fix: in `batcache.php`, guard now checks `isset( $wp_object_cache )` and `is_object( $wp_object_cache )` before `method_exists()` to avoid PHP 8 TypeError when object cache is not available (e.g. CLI, headless)
+* Development: no automated tests (manual testing only)
+* Admin bar: add "Purge Batcache" button for users with `manage_options`; purges entire batcache group via `wp_cache_flush_group()` when the object cache supports it (e.g. Redis)
 * Document compatibility with any WordPress object cache API backend (Redis, Memcached, etc.), not only Memcached
 * Update code comments and docs to use "object cache" instead of "memcached" where generic
 * Readme: add Object cache backend section; cite Memcached as reference setup and original dependency

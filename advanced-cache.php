@@ -1,9 +1,18 @@
 <?php
 /**
- * Batcache advanced-cache drop-in: page cache using the WordPress object cache API.
+ * Plugin Name: Batcache (Advanced Cache Drop-in)
+ * Plugin URI: https://wordpress.org/plugins/batcache/
+ * Description: Page cache drop-in using the WordPress object cache API. Caches full HTML responses and serves them on cache hit, reducing database and PHP load. Loaded automatically when WP_CACHE is true. Handles cache key generation, output buffering, cache variants (e.g. by user-agent), and cache expiration. Works with any object cache backend (Memcached, Redis, etc.).
+ * Version: 1.5
+ * Author: Andy Skelton
+ * Author URI: https://andyskelton.com/
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
- * Loaded by WordPress when WP_CACHE is true. Handles cache key generation,
- * output buffering, and serving cached HTML.
+ * This file is the advanced-cache drop-in. It is loaded by WordPress when
+ * WP_CACHE is true (typically after being copied to wp-content/advanced-cache.php
+ * by the Batcache Manager plugin or manually). It does not run as a standalone
+ * plugin; the main plugin file is batcache.php.
  *
  * @package Batcache
  */

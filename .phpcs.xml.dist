@@ -22,6 +22,8 @@
 
 	<!-- Exclude vendor and other non-project paths. -->
 	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>wp/*</exclude-pattern>
+	<exclude-pattern>.ddev/*</exclude-pattern>
 
 	<!-- Use WordPress-Extra (core + extra rules) and PHPCompatibility for WordPress. -->
 	<rule ref="WordPress-Extra">

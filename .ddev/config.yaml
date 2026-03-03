@@ -1,0 +1,8 @@
+# DDEV configuration for Batcache (WordPress plugin).
+# One-time setup: create WordPress in wp/ then start (see TESTING.md).
+name: batcache
+type: wordpress
+docroot: wp
+php_version: "8.3"
+web_environment:
+  - "WP_ROOT=/var/www/html/wp"

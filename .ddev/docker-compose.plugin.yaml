@@ -1,0 +1,7 @@
+# Mount the plugin (project root) into WordPress plugins directory
+# so the repo appears at wp/wp-content/plugins/batcache.
+services:
+  web:
+    volumes:
+      - "../.:/var/www/html/wp/wp-content/plugins/batcache"
+      - "../advanced-cache.php:/var/www/html/wp/wp-content/advanced-cache.php"
