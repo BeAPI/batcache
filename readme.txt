@@ -1,15 +1,15 @@
 === Batcache ===
 Contributors: automattic, andy, orensol, markjaquith, vnsavage, batmoo, yoavf
-Tags: cache, memcache, memcached, speed, performance, load, server
+Tags: cache, memcache, memcached, redis, object-cache, speed, performance, load, server
 Requires at least: 3.2
 Tested up to: 5.3.2
 Stable tag: 1.5
 
-Batcache uses Memcached to store and serve rendered pages.
+Batcache uses the WordPress object cache API to store and serve rendered pages (Redis, Memcached, or any compatible backend).
 
 == Description ==
 
-Batcache uses Memcached to store and serve rendered pages. It can also optionally cache redirects. It's not as fast as Donncha's WP-Super-Cache but it can be used where file-based caching is not practical or not desired. For instance, any site that is run on more than one server should use Batcache because it allows all servers to use the same storage.
+Batcache uses the WordPress object cache API to store and serve rendered pages. It works with any object cache backend compatible with the WordPress Object Cache (e.g. Redis, Memcached). It can also optionally cache redirects. It's not as fast as Donncha's WP-Super-Cache but it can be used where file-based caching is not practical or not desired. For instance, any site that is run on more than one server should use Batcache because it allows all servers to use the same storage.
 
 Development testing showed a 40x reduction in page generation times: pages generated in 200ms were served from the cache in 5ms. Traffic simulations with Siege demonstrate that WordPress can handle up to twenty times more traffic with Batcache installed.
 
@@ -24,7 +24,7 @@ Possible future features:
 
 == Installation ==
 
-1. Get the Memcached backend working. See below.
+1. Get a WordPress object cache backend working (Redis, Memcached, or other). See below.
 
 1. Upload `advanced-cache.php` to the `/wp-content/` directory
 
@@ -38,17 +38,19 @@ Possible future features:
 
 1. *Optional* Upload `batcache.php` to the `/wp-content/plugins/` directory.
 
-= Memcached backend =
+= Object cache backend =
 
-1. Install [memcached](https://memcached.org/) on at least one server. Note the connection info. The default is `127.0.0.1:11211`.
+Batcache requires a drop-in or plugin that implements the WordPress Object Cache API (e.g. Redis, Memcached, or another compatible backend). Install and configure one before using Batcache.
 
-1. Install the [PECL memcached extension](http://pecl.php.net/package/memcache) and [Memcached Object Cache](https://wordpress.org/plugins/memcached/).
+* **Memcached (reference setup):** Install [memcached](https://memcached.org/) on at least one server (default: `127.0.0.1:11211`), the [PECL memcached extension](http://pecl.php.net/package/memcache), and the [Memcached Object Cache](https://wordpress.org/plugins/memcached/) plugin. This was the original Batcache dependency and remains a common choice.
+* **Redis:** Use a Redis object cache drop-in or plugin (e.g. Redis Object Cache) and configure your Redis server.
+* Other backends compatible with the WordPress Object Cache API will work as well.
 
 == Frequently Asked Questions ==
 
 = Should I use this? =
 
-Batcache can be used anywhere Memcached is available. WP-Super-Cache is preferred for most blogs. If you have more than one web server, try Batcache.
+Batcache can be used with any WordPress object cache backend (e.g. Redis, Memcached). WP-Super-Cache is preferred for most blogs. If you have more than one web server, try Batcache.
 
 = Why was this written? =
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Batcache advanced-cache drop-in: page cache using Memcached.
+ * Batcache advanced-cache drop-in: page cache using the WordPress object cache API.
  *
  * Loaded by WordPress when WP_CACHE is true. Handles cache key generation,
  * output buffering, and serving cached HTML.
@@ -97,7 +97,7 @@ class batcache {
 	public $seconds = 120;
 
 	/**
-	 * Name of memcached group. Change to simulate a cache flush.
+	 * Name of object cache group. Change to simulate a cache flush.
 	 *
 	 * @var string
 	 */
@@ -444,10 +444,10 @@ class batcache {
 	}
 
 	/**
-	 * Configures memcached groups (no-remote, global).
+	 * Configures object cache groups (no-remote, global).
 	 */
 	public function configure_groups() {
-		// Configure the memcached client.
+		// Configure the object cache client.
 		if ( ! $this->remote ) {
 			if ( function_exists( 'wp_cache_add_no_remote_groups' ) ) {
 				wp_cache_add_no_remote_groups( array( $this->group ) );
