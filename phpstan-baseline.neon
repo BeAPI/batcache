@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Binary operation "\+" between string and string results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: advanced-cache.php
+
+		-
+			message: '#^Call to function batcache_stats\(\) on a separate line has no effect\.$#'
+			identifier: function.resultUnused
+			count: 5
+			path: advanced-cache.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: advanced-cache.php
+
+		-
+			message: '#^Undefined variable\: \$fun$#'
+			identifier: variable.undefined
+			count: 1
+			path: advanced-cache.php
+
+		-
+			message: '#^Variable \$wp_object_cache might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: batcache.php

@@ -1,0 +1,13 @@
+includes:
+	- phpstan-baseline.neon
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 5
+	paths:
+		- advanced-cache.php
+		- batcache.php
+		- batcache-stats-example.php
+	excludePaths:
+		- vendor/*
+		- batcache-stats.php (?)

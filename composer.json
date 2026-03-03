@@ -1,15 +1,36 @@
 {
-    "name"       : "automattic/batcache",
-    "description": "A memcached HTML page cache for WordPress.",
-    "homepage"   : "https://github.com/Automattic/batcache",
-    "type"       : "wordpress-muplugin",
-    "license"    : "GPL-2.0+",
-    "support"    : {
-			"issues": "https://github.com/Automattic/batcache/issues",
-			"forum":  "https://wordpress.org/support/plugin/batcache",
-			"source": "https://github.com/Automattic/batcache"
+	"name": "automattic/batcache",
+	"description": "A memcached HTML page cache for WordPress.",
+	"homepage": "https://github.com/Automattic/batcache",
+	"type": "wordpress-muplugin",
+	"license": "GPL-2.0+",
+	"support": {
+		"issues": "https://github.com/Automattic/batcache/issues",
+		"forum": "https://wordpress.org/support/plugin/batcache",
+		"source": "https://github.com/Automattic/batcache"
 	},
-    "require"    : {
-        "composer/installers": "~1.0"
-    }
+	"require": {
+		"composer/installers": "~1.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2",
+		"phpstan/phpstan": "^2.0",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"wp-coding-standards/wpcs": "^3"
+	},
+	"config": {
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": false
+		}
+	},
+	"scripts": {
+		"lint": "./vendor/bin/phpcs --standard=.phpcs.xml.dist",
+		"format": "./vendor/bin/phpcbf --standard=.phpcs.xml.dist",
+		"phpcs": "./vendor/bin/phpcs",
+		"analyze": "./vendor/bin/phpstan analyse --memory-limit=512M"
+	}
 }

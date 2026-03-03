@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="Batcache">
+	<description>Custom ruleset for Batcache (WordPress Coding Standards).</description>
+
+	<!-- Check PHP files only. -->
+	<arg name="extensions" value="php"/>
+	<file>.</file>
+
+	<!-- Exclude vendor and other non-project paths. -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<!-- Use WordPress-Extra (core + extra rules) and PHPCompatibility for WordPress. -->
+	<rule ref="WordPress-Extra">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+	</rule>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Set minimum supported PHP version (align with WordPress). -->
+	<config name="testVersion" value="7.4-"/>
+</ruleset>

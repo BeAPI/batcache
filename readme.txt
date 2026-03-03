@@ -60,6 +60,20 @@ Actually all of WordPress.com stays up during Apple events because of Batcache. 
 
 Batcache was named "supercache" when it was written. (It's still called that on WordPress.com.) A few months later, while "supercache" was still private, Donncha released the WP-Super-Cache plugin. It wouldn't be fun to dispute the name or create confusion for users so a name change seemed best. The move from "Super" to "Bat" was inspired by comic book heroes. It has nothing to do with the fact that the author's city is home to the [world's largest urban bat colony](http://www.batcon.org/our-work/regions/usa-canada/protect-mega-populations/cab-intro).
 
+== Development ==
+
+= PHP quality tools =
+
+Install dev dependencies with Composer:
+
+`composer install`
+
+* **Lint (PHPCS):** `composer lint` — WordPress Coding Standards (WPCS)
+* **Auto-fix (PHPCBF):** `composer format` — fix many lint violations automatically
+* **Static analysis (PHPStan):** `composer analyze` — level 5 with WordPress stubs
+
+Configuration: `.phpcs.xml.dist`, `phpstan.neon`, `phpstan-baseline.neon`, `.editorconfig`.
+
 == Changelog ==
 
 = 1.5 =
