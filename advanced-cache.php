@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Batcache (Advanced Cache Drop-in)
- * Plugin URI: https://wordpress.org/plugins/batcache/
+ * Plugin URI: https://github.com/BeAPI/batcache
  * Description: Page cache drop-in using the WordPress object cache API. Caches full HTML responses and serves them on cache hit, reducing database and PHP load. Loaded automatically when WP_CACHE is true. Handles cache key generation, output buffering, cache variants (e.g. by user-agent), and cache expiration. Works with any object cache backend (Memcached, Redis, etc.).
- * Version: 1.5
- * Author: Andy Skelton
- * Author URI: https://andyskelton.com/
+ * Version: 1.6
+ * Author: Be API (previously : Andy Skelton)
+ * Author URI: https://beapi.fr
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *

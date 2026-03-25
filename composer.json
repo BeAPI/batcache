@@ -1,6 +1,6 @@
 {
-	"name": "automattic/batcache",
-	"description": "An object-cache HTML page cache for WordPress (Redis, Memcached, etc.).",
+	"name": "beapi/batcache",
+	"description": "An object-cache HTML page cache for WordPress (Redis, Memcached, etc.). Forked by Be API.",
 	"homepage": "https://github.com/Automattic/batcache",
 	"type": "wordpress-muplugin",
 	"license": "GPL-2.0+",

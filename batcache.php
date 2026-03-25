@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Batcache Manager
- * Plugin URI: https://wordpress.org/plugins/batcache/
+ * Plugin URI: https://github.com/BeAPI/batcache
  * Description: Optional plugin that improves Batcache. Batcache uses the WordPress object cache API to store and serve rendered pages (Redis, Memcached, or any compatible backend).
  * Version: 1.6
- * Author: Andy Skelton, Automattic
- * Author URI: https://wordpress.org/plugins/batcache/
+ * Author: Be API (previously : Andy Skelton, Automattic)
+ * Author URI: https://beapi.fr
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
