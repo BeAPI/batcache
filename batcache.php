@@ -3,7 +3,7 @@
  * Plugin Name: Batcache Manager
  * Plugin URI: https://github.com/BeAPI/batcache
  * Description: Optional plugin that improves Batcache. Batcache uses the WordPress object cache API to store and serve rendered pages (Redis, Memcached, or any compatible backend).
- * Version: 1.6
+ * Version: 1.7
  * Author: Be API (previously : Andy Skelton, Automattic)
  * Author URI: https://beapi.fr
  * License: GPL-2.0-or-later
@@ -18,6 +18,12 @@ if ( ! isset( $batcache ) || ! is_object( $batcache ) || ! isset( $wp_object_cac
 }
 
 $batcache->configure_groups();
+
+// WP-CLI: `wp batcache flush` (see README).
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once __DIR__ . '/batcache-cli.php';
+	WP_CLI::add_command( 'batcache', 'Batcache_CLI_Command' );
+}
 
 // Regen home and permalink on posts and pages.
 add_action( 'clean_post_cache', 'batcache_post', 10, 2 );

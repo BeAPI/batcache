@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.7
+- Add WP CLI command to purge entire batcache group
+
 ## 1.6
 
 - Forked by Be API

@@ -4,7 +4,7 @@
 **Tags:** cache, memcache, memcached, redis, object-cache, speed, performance, load, server  
 **Requires at least:** 3.2  
 **Tested up to:** 5.3.2  
-**Stable tag:** 1.6	 
+**Stable tag:** 1.7	 
 
 Batcache uses the WordPress object cache API to store and serve rendered pages (Redis, Memcached, or any compatible backend).
 
@@ -39,7 +39,21 @@ Possible future features:
 
 5. Tweak the options near the top of `advanced-cache.php`
 
-6. *Optional* Upload `batcache.php` to the `/wp-content/plugins/` directory.
+6. *Optional* Upload `batcache.php` (and `batcache-cli.php` in the same folder) to the `/wp-content/plugins/` directory.
+
+### WP-CLI
+
+With [WP-CLI](https://wp-cli.org/) and the optional Batcache Manager plugin active, the following commands are available:
+
+- **`wp batcache flush`** — Flushes the entire object cache (`wp_cache_flush()`). Use with care on multisite or shared Redis/Memcached, since this clears all object cache data, not only HTML page cache.
+- **`wp batcache flush --group=<name>`** — Flushes a single object cache group when the backend supports it (`flush_group`, e.g. some Redis setups on WordPress 6.1+). Example: `wp batcache flush --group=batcache` clears only keys in Batcache’s default group (see `$batcache->group` in `advanced-cache.php` if you changed it).
+
+Examples:
+
+```bash
+wp batcache flush
+wp batcache flush --group=batcache --url=https://example.com/
+```
 
 ### Object cache backend
 
